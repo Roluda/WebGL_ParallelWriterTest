@@ -15,7 +15,7 @@ Actual Result (Build)
 
 Reasoning:
 
-The burst compiler compiled the .wasm assembly code with non interlocked instructions, which don't properly increment the counter of the list, which causes writes to the same address.
+The burst compiler compiled the **.wasm** assembly code with non interlocked instructions, which don't properly increment the counter of the list, which causes writes to the same address.
 
 `Writer.AddNoResize(value)` should boil down to:
 
