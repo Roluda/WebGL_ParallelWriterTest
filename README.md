@@ -2,6 +2,8 @@ Reproduction:
 1. Selcet Web as Build Target
 2. Build and Run
 
+This requires the `Native Multithreading` toggled on in the Build Settings (Web - Release Settings)
+
 Expected result (Editor)
 <img width="754" height="625" alt="Test_Editor" src="https://github.com/user-attachments/assets/5efcc947-9214-4915-b6c3-e280b91e9224" />
 
@@ -12,12 +14,6 @@ Actual Result (Build)
 Reasoning:
 
 The burst compiler compiled the .wasm assembly code with non interlocked instructions, which don't properly increment the counter of the list, which causes writes to the same address.
-
-This requires the `Native Multithreading` toggled on in the Build Settings (Web - Release Settings)
-
----
-
-## What the bad WASM looks like
 
 `Writer.AddNoResize(value)` should boil down to:
 
